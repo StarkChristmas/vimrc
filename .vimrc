@@ -15,14 +15,14 @@ Plugin 'gmarik/Vundle.vim'
 
 " Plugins to be managed by Vundle
 " ----------------------------------------------------------
-"Plugin 'edkolev/promptline.vim'
+Plugin 'edkolev/promptline.vim'
 Plugin 'tomasr/molokai'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-markdown'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'kien/rainbow_parentheses.vim'
-"Plugin 'bling/vim-airline'
+Plugin 'bling/vim-airline
 Plugin 'vim-airline'
 Plugin 'ervandew/supertab'
 Plugin 'Raimondi/delimitMate'
@@ -31,6 +31,9 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'godlygeek/tabular'
 Plugin 'MatlabFilesEdition'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'majutsushi/tagbar'
 " ------------------------------------------------------------
 "
 " All of your Plugins must be added before the following line
@@ -66,9 +69,9 @@ set t_Co=256
 syntax on
 
 "tabs and spaces
-set shiftwidth=2	"1 tab == 2 spaces
-set tabstop=2		"<TAB> == 2 spaces
-set softtabstop=2	"<TAB> and backspace
+set shiftwidth=4	"1 tab == 2 spaces
+set tabstop=4		"<TAB> == 2 spaces
+set softtabstop=4	"<TAB> and backspace
 set smarttab		"smart tab
 set autoindent		"set auto indent
 set smartindent		"set smart indent
@@ -91,6 +94,7 @@ highlight ColorColumn ctermbg=236
 
 "Searching
 set incsearch			   "search as char are entered
+set ignorecase
 set hlsearch			   "highlight matches
 set smartcase			   "smart with case search
 
@@ -181,6 +185,24 @@ filetype plugin on
 let g:pydiction_location = '~/.vim/tools/pydiction/complete-dict'
 let g:pydiction_menu_height = 3
 
+"vim-go plugin"
+let g:go_fmt_command = "goimports" " 格式化将默认的 gofmt 替换
+let g:go_autodetect_gopath = 1
+let g:go_list_type = "quickfix"
+
+let g:go_version_warning = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_generate_tags = 1
+
+let g:godef_split=2
+
+
 "NERDTree
 " autocmd vimenter * NERDTree
 autocmd StdinReadPre * let s:std_in=1
@@ -202,3 +224,6 @@ autocmd VimEnter,BufReadPost,bufwritepost,bufenter * :FixWhitespace
 let g:molokai_original = 1
 let g:rehash256 = 1
 colorscheme molokai
+
+
+au InsertLeave *.go,*.sh,*.php,*.py,*.md,*.c,*.cpp write

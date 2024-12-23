@@ -33,7 +33,7 @@ else
 fi
 
 cd
-cd vimrc1
+cd vimrc
 mv -f .vimrc ..
 cd
 rm -Rf vimrc
