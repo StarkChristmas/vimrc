@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd
-git clone https://github.com/HexChristmas/vimrc
+git clone https://github.com/StarkChristmas/vimrc
 cd
 
 if [ -e oldvim ]
