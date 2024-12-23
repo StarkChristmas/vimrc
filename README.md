@@ -8,7 +8,7 @@ Python
 ```
 ## 一键安装
 ```
-bash <(curl https://github.com/HexChristmas/vimrc/raw/master/autoinstall.sh -L)
+bash <(curl https://github.com/StarkChristmas/vimrc/raw/master/autoinstall.sh -L)
 ```
 ## 添加MarkdownPreview
 ```
