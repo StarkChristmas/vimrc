@@ -1,19 +1,19 @@
 " auto reload .vimrc when changed, this avoids reopening vim
 autocmd! bufwritepost .vimrc source %
 
-set nocompatible              " be iMproved, required
+set nocompatible              " 启用增强模式（必需）
 filetype on                   " required
 
-" set the runtime path to include Vundle and initialize
+" 设置运行路径以包含 Vundle 并初始化
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
+" 或者传入一个路径来指定插件安装位置
 "call vundle#begin('~/some/path/here')
 
-" let Vundle manage Vundle, required
+" Vundle 管理自身（必需）
 Plugin 'gmarik/Vundle.vim'
 
-" Plugins to be managed by Vundle
+" 通过 Vundle 管理的插件列表
 " ----------------------------------------------------------
 Plugin 'edkolev/promptline.vim'
 Plugin 'tomasr/molokai'
@@ -22,8 +22,7 @@ Plugin 'tpope/vim-markdown'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'bling/vim-airline
-Plugin 'vim-airline'
+Plugin 'bling/vim-airline'
 Plugin 'ervandew/supertab'
 Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/syntastic'
@@ -33,10 +32,72 @@ Plugin 'godlygeek/tabular'
 Plugin 'MatlabFilesEdition'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'junegunn/vim-easy-align'
-Plugin 'majutsushi/tagbar'
 " ------------------------------------------------------------
 "
 " All of your Plugins must be added before the following line
+
+" 语言支持插件
+Plugin 'sheerun/vim-polyglot'
+
+" Golang 支持
+Plugin 'fatih/vim-go'
+
+" Python 支持
+Plugin 'vim-python/python-syntax'
+Plugin 'Vimjas/vim-python-pep8-indent'
+
+" Bash 脚本支持
+Plugin 'voldikss/vim-floaterm'
+
+
+" ------------------------------
+" 高级开发功能插件
+" ------------------------------
+
+" LSP support and autocompletion
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Code navigation and symbol highlighting
+Plugin 'RRethy/vim-illuminate'
+Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/fzf'
+
+" Code navigation and fuzzy finding
+Plugin 'preservim/tagbar'
+Plugin 'ctrlpvim/ctrlp.vim'
+
+" Git integration
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+
+" Debugger interface
+Plugin 'puremourning/vimspector'
+
+" Code formatting and linting
+Plugin 'Chiel92/vim-autoformat'
+Plugin 'dense-analysis/ale'
+
+" Syntax enhancement
+Plugin 'luochen1990/rainbow'
+Plugin 'jiangmiao/auto-pairs'
+
+
+" ------------------------------
+" 恶意样本分析与二进制查看插件
+" ------------------------------
+
+" YARA 语法高亮
+Plugin 's3rvac/vim-syntax-yara'
+
+" 十六进制/二进制编辑
+Plugin 'fidian/hexmode'
+" 可选的更高级二进制分析，支持模板解析
+Plugin 'd0c-s4vage/pfp-vim'
+
+" 文本结构与对齐处理
+Plugin 'tpope/vim-surround'
+Plugin 'vim-scripts/Align'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -52,10 +113,12 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 
-" set UTF-8 encoding
-set enc=utf-8
-set fenc=utf-8
+" 设置全局编码
+set encoding=utf-8
 set termencoding=utf-8
+
+" 每个文件打开时设置文件编码为 UTF-8（确保 modifiable）
+autocmd BufReadPost,BufNewFile * if &modifiable | setlocal fileencoding=utf-8 | endif
 
 " disable vi compatibility (emulation of old bugs)
 set nocompatible
@@ -227,3 +290,19 @@ colorscheme molokai
 
 
 au InsertLeave *.go,*.sh,*.php,*.py,*.md,*.c,*.cpp write
+
+" ------------------------------
+" 语言专属配置
+" ------------------------------
+
+" Golang settings
+let g:go_fmt_command = "gopls"
+let g:go_def_mode = "gopls"
+let g:go_info_mode = "gopls"
+
+" Python settings
+let g:python_recommended_style = 0
+
+" 通用设置
+filetype plugin indent on
+syntax enable
